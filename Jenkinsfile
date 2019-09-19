@@ -1,25 +1,13 @@
 
 pipeline {
-    agent { docker 'python:3.5.1' }
+    agent {
+        docker { image 'node:7-alpine' }
+    }
     stages {
-        stage('build') {
+        stage('Test') {
             steps {
-                sh 'python --version'
-                
+                sh 'node --version'
             }
-        }
-    }   
-    agent any
-    stages {
-        stage('build') {
-            steps {
-                sh 'echo "Hello World"'
-                sh '''
-                    echo "Multiline shell steps works too"
-                    ls -lah
-                '''
-            }
-            
         }
     }
 }
